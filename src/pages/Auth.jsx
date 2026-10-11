@@ -8,17 +8,30 @@ export const homeFor = (role) => NAV[role][0][0];
 
 function Shell({ title, children }) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-brand-50 px-4 py-8">
-      <div className="w-full max-w-md">
-        <div className="mb-4 text-center">
-          <div className="text-2xl font-bold text-brand-900">UniServe</div>
-          <div className="text-sm text-slate-500">{UNIVERSITY}</div>
+    <div className="flex min-h-screen">
+      <aside className="hidden w-5/12 flex-col justify-between border-r-4 border-gold-500 bg-brand-900 p-12 text-white lg:flex">
+        <div className="text-xs uppercase tracking-[0.3em] text-gold-400">{UNIVERSITY}</div>
+        <div>
+          <div className="font-serif text-6xl font-semibold leading-tight">UniServe</div>
+          <div className="my-5 h-0.5 w-16 bg-gold-500" />
+          <p className="max-w-sm font-serif text-xl italic text-brand-100">University Student Management and Services System</p>
+          <p className="mt-4 max-w-sm text-sm text-brand-200">Enrollment, clearance, grades and document requests, all in one place, with no more waiting in line.</p>
         </div>
-        <div className="card">
-          <h1 className="mb-4 text-lg font-semibold">{title}</h1>
-          {children}
+        <div className="text-xs text-brand-200">Office of the Registrar</div>
+      </aside>
+      <main className="flex flex-1 items-center justify-center bg-ivory-100 px-4 py-8">
+        <div className="w-full max-w-md">
+          <div className="mb-6 text-center lg:hidden">
+            <div className="font-serif text-4xl font-semibold text-brand-900">UniServe</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-gold-600">{UNIVERSITY}</div>
+          </div>
+          <div className="card p-8">
+            <h1 className="mb-1 text-3xl font-semibold text-brand-900">{title}</h1>
+            <div className="mb-5 h-0.5 w-10 bg-gold-500" />
+            {children}
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
@@ -42,7 +55,7 @@ export function Login() {
         <Field label="Email"><input className="input" type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} /></Field>
         <Field label="Password"><input className="input" type="password" required value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} /></Field>
         <button className="btn w-full" type="submit">Sign in</button>
-        <p className="text-center text-sm text-slate-500">New student? <Link className="text-brand-600 underline" to="/register">Create an account</Link></p>
+        <p className="text-center text-sm text-slate-500">New student? <Link className="font-semibold text-brand-700 underline" to="/register">Create an account</Link></p>
       </form>
     </Shell>
   );
@@ -71,7 +84,7 @@ export function Register() {
           <select className="input" value={form.yearLevel} onChange={set('yearLevel')}>{[1, 2, 3, 4, 5].map((y) => <option key={y}>{y}</option>)}</select>
         </Field>
         <button className="btn w-full" type="submit">Create account</button>
-        <p className="text-center text-sm text-slate-500">Already registered? <Link className="text-brand-600 underline" to="/login">Sign in</Link></p>
+        <p className="text-center text-sm text-slate-500">Already registered? <Link className="font-semibold text-brand-700 underline" to="/login">Sign in</Link></p>
       </form>
     </Shell>
   );

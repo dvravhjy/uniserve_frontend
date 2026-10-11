@@ -25,7 +25,7 @@ function Bell() {
   const markRead = async (id) => { await api.patch(`/notifications/${id}/read`); reload(); };
   return (
     <div className="relative">
-      <button onClick={toggle} aria-label="Notifications" className="relative rounded-md px-2 py-1 text-white hover:bg-brand-700">
+      <button onClick={toggle} aria-label="Notifications" className="relative rounded-md px-2 py-1 text-white hover:bg-brand-600">
         🔔{unread > 0 && <span className="absolute -right-1 -top-1 rounded-full bg-red-500 px-1.5 text-xs">{unread}</span>}
       </button>
       {open && (
@@ -51,19 +51,19 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen">
-      <header className="bg-brand-900 text-white">
+      <header className="border-b-4 border-gold-500 bg-brand-900 text-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <button className="md:hidden" aria-label="Menu" onClick={() => setMenu(!menu)}>☰</button>
             <div>
-              <div className="font-semibold">UniServe</div>
-              <div className="text-xs text-blue-200">{UNIVERSITY}</div>
+              <div className="font-serif text-2xl font-semibold leading-none tracking-wide">UniServe</div>
+              <div className="mt-1 text-[11px] uppercase tracking-[0.2em] text-gold-400">{UNIVERSITY}</div>
             </div>
           </div>
           <div className="flex items-center gap-3 text-sm">
             <Bell />
             <span className="hidden sm:inline">{user.fullName}</span>
-            <button className="rounded-md border border-blue-300 px-2 py-1 hover:bg-brand-700" onClick={out}>Log out</button>
+            <button className="rounded-md border border-gold-400 px-3 py-1 text-xs uppercase tracking-wider hover:bg-brand-700" onClick={out}>Log out</button>
           </div>
         </div>
       </header>
@@ -72,7 +72,7 @@ export default function Layout() {
           <ul className="space-y-1">
             {links.map(([to, label]) => (
               <li key={to}>
-                <NavLink to={to} onClick={() => setMenu(false)} className={({ isActive }) => `block rounded-md px-3 py-2 text-sm ${isActive ? 'bg-brand-600 text-white' : 'text-slate-700 hover:bg-slate-200'}`}>
+                <NavLink to={to} onClick={() => setMenu(false)} className={({ isActive }) => `block border-l-4 px-3 py-2 text-sm ${isActive ? 'border-gold-500 bg-brand-100 font-semibold text-brand-900' : 'border-transparent text-slate-700 hover:bg-ivory-200'}`}>
                   {label}
                 </NavLink>
               </li>
